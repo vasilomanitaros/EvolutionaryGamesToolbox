@@ -1,4 +1,4 @@
-# Game Theory MATLAB Toolbox
+# Iterated Prisoner’s Dilemma MATLAB Toolbox
 
 This repository provides a MATLAB toolbox for conducting experiments on the Iterated Prisoner’s Dilemma. The codebase was developed during the 8th semester by Ioannis Lazaridis, Ioannis Kosmas Vardakis, and Konstantinos Vlachakos for the Game Theory course at the Aristotle University of Thessaloniki.
 
