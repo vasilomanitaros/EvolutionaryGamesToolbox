@@ -16,8 +16,10 @@ Game_Theory/
 ├── Strategies/     # Implementations of various strategies
 ├── Modes/          # Imitation and Fitness Dynamics modules
 ├── Functions/      # Utility scripts for the implementation
-├── TheFitPlots/    # Fitness dynamics results and ready-to-run experiments (paper-based)
-├── TheImiPlots/    # Imitation dynamics results and ready-to-run experiments (report-based)
+├── TheFitPlots/    # Fitness dynamics results and ready-to-run experiments theoretical (paper-based)
+├── SimFitPlots/    # Fitness dynamics results and ready-to-run experiments simulated(paper-based)
+├── TheImiPlots/    # Imitation dynamics results and ready-to-run experiments theoretical (report-based)
+├── SimImiPlots/    # Imitation dynamics results and ready-to-run experiments simulated (report-based)
 └── README.md       # Project documentation
 ```
 
