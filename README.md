@@ -10,21 +10,34 @@ For inquiries or references, please contact:
 ## Repository Structure
 
 ```
-Game_Theory/
-├── base.m          # Main script for running experiments
-├── plots.m         # Aggregates results and generates visualizations
-├── Strategies/     # Implementations of various strategies
-├── Modes/          # Imitation and Fitness Dynamics modules
-├── Functions/      # Utility scripts for the implementation
-├── TheFitPlots/    # Fitness dynamics results and ready-to-run experiments theoretical (paper-based)
-├── SimFitPlots/    # Fitness dynamics results and ready-to-run experiments simulated(paper-based)
-├── TheImiPlots/    # Imitation dynamics results and ready-to-run experiments theoretical (report-based)
-├── SimImiPlots/    # Imitation dynamics results and ready-to-run experiments simulated (report-based)
-└── README.md       # Project documentation
+GAME_THEORY/
+├── Code/
+│   ├── Functions/
+│   ├── Modes/
+│   ├── Strategies/
+│   └── Documentation/
+│       ├── base.m           # Main entry point for experiments
+│       └── plots.m          # Generates plots for analysis
+├── Examples/
+│   ├── SimFitPlots/         # Simulated fitness dynamics results and experiments
+│   ├── SimImiPlots/         # Simulated imitation dynamics results and experiments
+│   ├── TheFitPlots/         # Theoretical fitness dynamics results and experiments
+│   └── TheImiPlots/         # Theoretical imitation dynamics results and experiments
+├── Report/
+└── README.md                # Project documentation
+
 ```
 
 - **base.m**: Main entry point for running Iterated Prisoner’s Dilemma experiments.
 - **plots.m**: Aggregates outputs and generates plots for analysis.
+
+## Quickstart
+
+To install and use this repository create an empty folder and use:
+
+```bash
+git clone https://github.com/vasilomanitaros/EvolutionaryGamesToolbox.git
+```
 
 ## Reference
 
