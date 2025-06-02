@@ -6,10 +6,10 @@ o=find(Pop10>0);
 str=Strategies(o);
 Pop10=Pop10(o);
 B2 =[3 0;4.6, 1];
-[POP3, BST, FIT] = TourTheFit2(B2, str, Pop10, T, J);
+[POP3, BST, FIT] = TourSimFit(B2, str, Pop10, T, J);
 J=1000;
 B2 =[3 0;4.7, 1];
-[POP4, BST, FIT] = TourTheFit2(B2, str, Pop10, T, J);
+[POP4, BST, FIT] = TourSimFit(B2, str, Pop10, T, J);
 figure;
 J=500;
 subplot(1,2,1); % First subplot

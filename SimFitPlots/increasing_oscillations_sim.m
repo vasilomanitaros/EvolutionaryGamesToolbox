@@ -5,7 +5,7 @@ Pop5 = [0, 0, 0, 0, 400, 0, 0, 200, 0, 0, 300, 0, 0, 0, 0, 0, 0, 0, 0]; J=450; T
 o=find(Pop5>0);
 str=Strategies(o);
 Pop5=Pop5(o);
-[POP, BST, FIT] = TourTheFit2(B, str, Pop5, T, J);
+[POP, BST, FIT] = TourSimFit(B, str, Pop5, T, J);
 figure;
 plot(0:J, POP, 'LineWidth', 2);
 legend(strrep(str,'_',' '), 'Location', 'best');

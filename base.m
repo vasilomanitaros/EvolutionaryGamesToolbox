@@ -3,12 +3,14 @@ addpath('./TheFitPlots');
 addpath('./Modes');
 addpath('./TheImiPlots');
 addpath('./Functions');
+addpath('./SimImiPlots');
+addpath('./SimFitPlots');
 clear;
 
 % === Payoff Matrix ===
 % B is the standard matrix for IPD: [R S; T P] (Reward, Sucker, Temptation, Punishment)
-B = [3 0; 5 1];      
-
+%B = [3 1; 4 2];      
+B = [3 0; 5 1];
 % === Available Strategies ===
 % 
 % All_C           - Always cooperates
@@ -31,15 +33,17 @@ B = [3 0; 5 1];
 % Per_CCCCD       - Periodic strategy: CCCCD...
 % Prober          - Tests opponent, then exploits if weak
 
-Strategies = ["Soft_Major", "Per_nasty", "Per_kind"];
+Strategies = ["Per_CD", "Soft_Major", "Per_nasty"];
+
+
 
 % === Initial Population ===
 % Each element corresponds to the number of players using the respective strategy in the Strategies array.
-Pop = [10, 10, 10];
+Pop=[5,5,5];
 
 % === Simulation Parameters ===
-T = 100;     % Number of rounds in each Iterated Prisoner's Dilemma game
-J = 100;     % Number of generations for evolutionary modes (e.g., TourTheFit)
+T = 1000;     % Number of rounds in each Iterated Prisoner's Dilemma game
+J = 10;     % Number of generations for evolutionary modes (e.g., TourTheFit)
 K = 1;       % Mutation or learning step size (used in some imitation modes)
 
 % === Simulation Modes ===
@@ -51,10 +55,10 @@ K = 1;       % Mutation or learning step size (used in some imitation modes)
 % - 'TourTheFit2'
 % - 'TourSimFit'
 
-mode = 'TourTheImi';
+mode = 'TourSimImi2';
 
 % === Run Simulation and Plot Results ===
 % This function will select the correct simulation and plotting logic
 plots(B, Strategies, Pop, mode, T, J, K);
 % Else pick a ready example from TheFitPlots or TheImiPlots
-%defectors_may_be_strong
+%defectors_may_be_strong_sim

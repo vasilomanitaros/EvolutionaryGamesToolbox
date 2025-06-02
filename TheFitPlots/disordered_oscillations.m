@@ -1,7 +1,7 @@
 Strategies = ["All_C","All_D","TfT","Grim","Per_CD","Willing","Tf2T","Soft_Major", ...
               "Slow_TfT","Reverse_Pavlov","Per_nasty","Per_kind","Mistrust", ...
               "Hard_TfT","Pavlov","Hard_Major", "Gradual", "Per_CCCCD", "Prober"];
-Pop6 = [0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, 800]; J=250;
+Pop6 = [0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, 800]; J=250; T = 1000;
 o=find(Pop6>0);
 str=Strategies(o);
 Pop6=Pop6(o);

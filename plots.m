@@ -11,13 +11,26 @@ function plots = plots(B, Strategies, Pop, mode, T, J, K)
             if nargin < 7
                 error('K is required for TourSimImi.');
             end
-            [POP, BST] = TourSimImi(B, Strategies, POP0, K, T, J)
+            [POP, BST] = TourSimImi(B, Strategies, Pop, K, T, J)
             figure;
             plot(0:J, POP, 'LineWidth', 2);
             legend(strrep(Strategies, '_', ' '), 'Location', 'best');
             xlabel('Generation');
             ylabel('Number of Players');
             title('Strategy Frequencies Over Time (TourSimImi)');
+            grid on;
+            
+            case 'TourSimImi2'
+            if nargin < 7
+                error('K is required for TourSimImi2.');
+            end
+            [POP, BST] = TourSimImi2(B, Strategies, Pop, K, T, J)
+            figure;
+            plot(0:J, POP, 'LineWidth', 2);
+            legend(strrep(Strategies, '_', ' '), 'Location', 'best');
+            xlabel('Generation');
+            ylabel('Number of Players');
+            title('Strategy Frequencies Over Time (TourSimImi2)');
             grid on;
 
         case 'TourTheImi'
