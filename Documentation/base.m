@@ -1,10 +1,10 @@
-addpath('./Strategies');
-addpath('./TheFitPlots');
-addpath('./Modes');
-addpath('./TheImiPlots');
-addpath('./Functions');
-addpath('./SimImiPlots');
-addpath('./SimFitPlots');
+addpath('../Code/Strategies');
+addpath('../Examples/TheFitPlots');
+addpath('../Code/Modes');
+addpath('../Examples/TheImiPlots');
+addpath('../Code/Functions');
+addpath('../Examples/SimImiPlots');
+addpath('../Examples/SimFitPlots');
 clear;
 
 % === Payoff Matrix ===
