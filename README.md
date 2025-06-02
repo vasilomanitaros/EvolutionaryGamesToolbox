@@ -15,9 +15,9 @@ EvolutionaryGamesToolbox/
 │   ├── Functions/
 │   ├── Modes/
 │   ├── Strategies/
-│   └── Documentation/
-│       ├── base.m           # Main entry point for experiments
-│       └── plots.m          # Generates plots for analysis
+├── Documentation/
+│   ├── base.m               # Main entry point for experiments
+│   └── plots.m              # Generates plots for analysis
 ├── Examples/
 │   ├── SimFitPlots/         # Simulated fitness dynamics results and experiments
 │   ├── SimImiPlots/         # Simulated imitation dynamics results and experiments
