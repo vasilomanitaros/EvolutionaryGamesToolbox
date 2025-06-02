@@ -31,13 +31,23 @@ EvolutionaryGamesToolbox/
 - **base.m**: Main entry point for running Iterated Prisoner’s Dilemma experiments.
 - **plots.m**: Aggregates outputs and generates plots for analysis.
 
-## Quickstart
+## Installation
 
 To install and use this repository create an empty folder and use:
 
 ```bash
 git clone https://github.com/vasilomanitaros/EvolutionaryGamesToolbox.git
 ```
+
+## Quickstart
+
+To use this toolbox to generate the experiments provided and create your own please use **base.m** as your main workstation.
+
+## Report
+
+There is also a pdf report in the section reports where we analyze and present all the experiments and the information regarding to that project.
+The subfolder report contains also the LaTeX source code ready to be compiled
+
 
 ## Reference
 
