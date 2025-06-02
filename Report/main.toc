@@ -1,0 +1,26 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {0}Εισαγωγή}{2}{chapter.0}%
+\contentsline {chapter}{\numberline {1}Quickstart}{5}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Fitness Dynamics}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Θεωρητική Ανάλυση του Fitness Dynamics}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Προσομοίωση του Fitness Dynamics}{15}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Θεωρητική Αναλυση του TourSimFit: }{15}{subsection.2.2.1}%
+\contentsline {subsubsection}{Defectors may be strong}{15}{section*.6}%
+\contentsline {subsubsection}{Monotonous Convergence}{16}{section*.7}%
+\contentsline {subsubsection}{Attenuated Oscillations}{16}{section*.8}%
+\contentsline {subsubsection}{Periodic Movements}{17}{section*.9}%
+\contentsline {subsubsection}{Increasing Oscillations}{17}{section*.10}%
+\contentsline {subsubsection}{Disordered Oscillations}{18}{section*.11}%
+\contentsline {subsubsection}{Sensitivity of dynamics to population size}{18}{section*.12}%
+\contentsline {subsubsection}{Sensitivity of dynamics to winner}{19}{section*.13}%
+\contentsline {subsubsection}{Sensitivity to CIPD Payoff}{19}{section*.14}%
+\contentsline {subsubsection}{Sensitivity to Game Length}{19}{section*.15}%
+\contentsline {subsubsection}{Repartition divided by 10}{20}{section*.16}%
+\contentsline {chapter}{\numberline {3}Imitation Dynamics}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Θεωρητική ανάλυση του Imitation Dynamics:}{21}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Προσομοίωση του Imitation Dynamics}{26}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Discussion}{29}{chapter.4}%
+\contentsline {chapter}{Appendices}{30}{section*.17}%
+\contentsline {section}{\numberline {Appx. A:}\\Απόδειξη μεταξύ \texttt {s\_states }, \texttt {r\_states} από κ. Κεχαγιά }{31}{section.1..1}%
+\contentsline {section}{\numberline {Appx. B:}\\Code }{32}{section.1..2}%
+\contentsline {section}{\textbf {References}}{38}{section*.33}%

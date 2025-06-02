@@ -1,0 +1,115 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage[greek,english]{babel}
+\title{{Aristotle University of Thessaloniki\\Group Project for the Game Theory Course\\ Group 01\\[2em]\textbf{Imitation and Fitness Dynamics on Iterated Prisoner's Dilemma}}\\}
+\usepackage{titlepic}
+\usepackage[dvipsnames]{xcolor}
+%\usepackage[lite]{mtpro2}
+%\usepackage{mathptmx} 
+%\usepackage{newtxtext}
+\usepackage{tcolorbox}
+\usepackage{multirow}
+\author{Ιωάννης Λαζαρίδης\\10431\\\texttt{ilazarit@ece.auth.gr} \and Κωνσταντίνος Βλαχάκος\\10403\\\texttt{kvlachak@ece.auth.gr} \and Ιωάννης Κοσμάς Βαρδάκης\\10498\\ \texttt{ivardakis@ece.auth.gr}}
+\titlepic{\includegraphics[width=\textwidth]{ela.png}}
+%\usepackage{fontspec}
+%\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+%\usepackage{kerkis}
+\usepackage[T1]{fontenc}
+\setcounter{section}{0}
+\date{May 2025}
+%\setmainfont[BoldFont=Times New Roman Greek Bold,ItalicFont=Times New Roman Greek Inclined]  {Times New Roman Greek}
+\renewcommand{\cite}[1]{[\ref{#1}]}
+%\usepackage{newtxmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\usepackage{mtpro2}
+\usepackage[greek,english]{babel}
+\usepackage{alphabeta}
+\usepackage{bigints}
+\usepackage[toc,page]{appendix}
+\usepackage{bm}\def\mathclap#1{\text{\hbox to 0pt{\hss$\mathsurround=0pt#1$\hss}}}
+\newtcolorbox{mybox}{colback=white!80!yellow,colframe=black!65!white}
+\newtcolorbox{box1}{colback=white!75!Red,colframe=black!85!white}
+%\newtcolorbox{mybox}{colback=white!80!yellow,colframe=black!65!white}
+\newcommand{\dd}[2]{\frac{d #1}{d#2}}
+%\newfontfamily{\trb}{Times New Roman Greek Bold}
+%\newenvironment{tnrb}{\trb}{\par}
+\usepackage{fontawesome5}
+\usepackage{etoolbox}
+\thinmuskip=5mu    % Default: 3mu (affects \, and automatic thin spaces)
+\medmuskip=5mu     % Default: 4mu (affects \: and operators like +, -)
+\thickmuskip7mu
+\usepackage{cancel}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+\usepackage{hyperref}
+\renewcommand{\d}{\,\mathrm{d}}
+\renewcommand{\a}{\mathcal{A}}
+\newcommand{\z}{\frac{1}{2\pi}}
+\newcommand{\norm}[1]{\lVert #1 \rVert_1}
+\newcommand{\pnorm}[2]{\lVert #1 \rVert_#2}
+\newcommand{\s}{\sin}
+\renewcommand{\c}{\cos}
+\renewcommand{\qed}{\hfill \(\blacksquare\)}
+\newcommand{\fc}{e^{-inx}}
+\newcommand{\sn}{\sum_{k=-N}^{N}}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	language=Matlab
+}
+
+\lstset{style=mystyle}
+\AtBeginEnvironment{lstlisting}{\vspace{1em}}
+\AtEndEnvironment{lstlisting}{\vspace{1em}}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+%\fancyhead[L]{\leftmark} % Chapter/section info
+%\fancyhead[R]{\thepage} % Page number on right
+
+\makeatletter
+\renewcommand{\@chapapp}{Κεφάλαιο}  % This replaces "Chapter" with "Part"
+\makeatother
+\usepackage{nameref}
+\begin{document}
+
+	\maketitle{}
+	\tableofcontents
+\setcounter{chapter}{-1}
+\include{introduction.tex}
+\include{quickstart.tex}
+\include{chapter2.tex}
+\include{chapter1.tex}
+\include{discussion.tex}
+\include{appendix.tex}
+\include{ref.tex}
+\end{document}

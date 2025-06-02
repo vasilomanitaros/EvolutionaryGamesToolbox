@@ -1,0 +1,423 @@
+\begin{appendices}
+\renewcommand{\thesection}{Appx. \Alph{section}:}
+
+\section{\\Απόδειξη μεταξύ \texttt{s\_states }, \texttt{r\_states} από κ. Κεχαγιά  }
+\subsection*{The General Case \( N \in \mathbb{N} \)}
+
+As already mentioned, the process \((\bm{r}(t))_{t=0}^{\infty}\) is a MC. Let us now look at the \((s(t))_{t=0}^{\infty}\) process. We have  
+\[
+\forall t : \bm{s}(t) = F(\bm{r}(t)).
+\]
+
+We note that the inverse \(F^{-1}\) is a set-valued function:  
+\[
+\forall\bm{ s} : F^{-1}(\bm{s}) = \{ \bm{r} : F(\bm{r}) = \bm{s} \}.
+\]
+
+The following Definition 1 and Proposition 1  are from \cite{kex}.
+
+\subsection*{Definition 1}
+Suppose we are given: (a) a Markov chain \((\bm{x}(t))_{t=0}^{\infty}\) with state space \(R = \{ 1, \ldots, N \}\) and (b) a partition \(\mathcal{S} = \{ R_1, \ldots, R_M \}\) of \(R\). We construct a new stochastic process \((\bm{y}(t))_{x=0}^{\infty}\) with state space \(\mathcal{S}\) by setting  
+\[
+\forall t : \bm{y}(t) = R_m \text{ iff } \bm{x}(t) \in R_m.
+\]
+
+We say that \((\bm{x}(t))_{t=0}^{\infty}\) is \emph{lumpable with respect to \(\mathcal S\)} iff \((\bm{y}(t))_{t=0}^{\infty}\) is a MC with transition probabilities which do not depend on the initial probability \((\pi_{\bm{x}})_{\bm{x} \in R}\) (where \(\pi_{\bm{x}} = \Pr(x(0) = x)\)).
+
+
+%\begin{proposition }
+\subsection*{Proposition 1}
+Given \((\bm{x}(t))_{t=0}^{\infty}\) and \((\bm{y}(t))_{t=0}^{\infty}\) as in Definition 3.2.1, \((x(t))_{t=0}^{\infty}\) is lumpable with respect to \(\{ R_1, \ldots, R_M \}\) iff  
+\[
+\forall \bm{y}, \hat{\bm{y}} \in \mathcal S, \forall \bm{x}, \hat{\bm{x}} \in F^{-1}(\bm{y}) : \Pr(\bm{x} \rightarrow \hat{\bm{y}}) = \Pr(\hat{\bm{x}} \rightarrow \hat{\bm{y}}).
+\]
+
+Then it is also true that  
+\[
+\forall \bm{y}, \hat{\bm{y}} \in \mathcal S, \forall \bm{x} \in F^{-1}(\bm{y}) : \Pr(\bm{y} \rightarrow \hat{\bm{y}}) = \Pr(\bm{x} \rightarrow \hat{\bm{y}}).
+\]
+%\end{proposition}
+
+Now, regarding our \((\bm{r}(t))_{t=0}^{\infty}\) and \((\bm{s}(t))_{t=0}^{\infty}\) processes, we have the following.
+
+%\begin{proposition}
+\((\bm{r}(t))_{t=0}^{\infty}\) is lumpable with respect to \(\mathcal S\).
+%\end{proposition}
+
+\begin{proof}
+Take any \(\bm{s}, \hat{\bm{s}} \in \mathcal S\) and any \(\bm{r} = (r_1, r_2, \ldots, r_N)\), \(\hat{\bm{r}} = (\hat{r}_1, \hat{r}_2, \ldots, \hat{r}_N) \in F^{-1}(\bm{s})\). So we have \(F(\bm{r}) = F(\hat{\bm{r}}) = \bm{s}\). This means that \(\bm{r}\) and \(\hat{\bm{r}}\) contain the same number of 1's, 2's and 3's; in other words, \(\hat{\bm{r}}\) is obtained by a permutation of the elements of \(\bm{r}\):
+\[
+(\hat{r}_1, \hat{r}_2, \ldots, \hat{r}_N) = (r_{i_1}, r_{i_2}, \ldots, r_{i_N})
+\]
+where \((i_1, \ldots, i_N)\) is a permutation of \((1, 2, \ldots, N)\). Now
+\begin{align*}
+\Pr(\bm{r} \rightarrow {\bm{s}}) &= \Pr((r_1, r_2, \ldots, r_N) \rightarrow {\bm{s}}) \\
+&= \sum_{(r'_1,r'_2,\ldots,r'_N) \in F({\bm{s}})} \Pr((r_1, r_2, \ldots, r_N) \rightarrow (r'_1, r'_2, \ldots, r'_N)) \\
+&= \sum_{(r'_1,r'_2,\ldots,r'_N) \in F(\bm{s})} \Pr\left((r_{i_1}, r_{i_2}, \ldots, r_{i_N}) \rightarrow (r'_{i_1}, r'_{i_2}, \ldots, r'_{i_N})\right) \\
+&= \sum_{(r'_{i_1},r'_{i_2},\ldots,r'_{i_N}) \in F({\bm{s}})} \Pr\left((\hat{r}_1, \hat{r}_2, \ldots, \hat{r}_N) \rightarrow (r'_{i_1}, r'_{i_2}, \ldots, r'_{i_N})\right) \\
+&= \Pr(\hat{\bm{r}} \rightarrow \hat{\bm{s}}).
+\end{align*}
+So the condition of Proposition 3.2.2 is satisfied and \((\bm{r}(t))_{t=0}^{\infty}\) is lumpable.
+\end{proof}
+\newpage
+\section{\\Code	}
+
+\subsection*{\texttt{TourTheFit}}
+
+\label{appendix:TourTF}
+\begin{lstlisting}
+	
+	function [POP,BST,FIT] = TourTheFit(B,Strategies,Pop0,T,J)
+	Re_matrix=Reward_str(B,Strategies,T);
+	
+	l_str=length(Strategies);
+	
+	P=sum(Pop0);
+	
+	POP=zeros(J,l_str);
+	FIT=zeros(J-1,l_str);
+	BST=cell(J-1,1);
+	
+	POP(1,:)=Pop0;
+	
+	
+	for i=1:J-1
+	FIT(i,:)=(Re_matrix*POP(i,:)'-diag(Re_matrix))';
+	
+	t=FIT(i,:)*POP(i,:)';
+	
+	m=max(FIT(i,:));
+	
+	temp= FIT(i,:)==m;
+	
+	BST{i}=Strategies(temp);
+	
+	POP(i+1,:)=POP(i,:).*FIT(i,:)*(P/t);
+	
+	
+	
+	end
+	end
+	
+\end{lstlisting}
+
+\subsection*{\texttt{Reward\_str}}
+\label{appendix:RewST}
+\begin{lstlisting}
+	function Matrix = Reward_str(B,Strategies,T)
+	l=length(Strategies);
+	
+	Matrix=zeros(l);
+	
+	for i=1:l
+	for j=i:l
+	memory_game=[]; %The memory for each game
+	for k=1:T
+	p1_move=move(memory_game,Strategies(i));
+	if isempty(memory_game)
+	p2_move=move(memory_game,Strategies(j));
+	else
+	memory_game2=memory_game(:,[2 1]); % change the perspective of the memory so the 2nd column is the opponent
+	p2_move=move(memory_game2,Strategies(j));
+	end
+	
+	Matrix(i,j)=Matrix(i,j)+B(p1_move,p2_move);
+	if i ~= j
+	Matrix(j,i)=Matrix(j,i)+B(p2_move,p1_move);
+	end
+	
+	memory_game=[memory_game;p1_move p2_move]; %#ok<AGROW> % put the new moves into memory
+	
+	
+	end
+	
+	end
+	
+	end
+	end
+	
+\end{lstlisting}
+
+\subsection*{\texttt{TourSimFit}}
+\label{appendix:TSF}
+\begin{lstlisting}
+	function [POP,BST,FIT]=TourSimFit(B,Strategies,Pop0,T,J)
+	l_str=length(Strategies);
+	
+	P=sum(Pop0);
+	
+	POP=zeros(J,l_str);
+	FIT=zeros(J-1,l_str);
+	BST=cell(J-1,1);
+	
+	POP(1,:)=Pop0;
+	
+	for i=1:J
+	disp(i);
+	Scores=Axel2_improved(B,Strategies,POP(i,:),T);
+	
+	%FIT(i,:)=Sum_scores(Scores,Strategies,POP(i,:));
+	
+	FIT(i,:) = Axel2_improved(B,Strategies,POP(i,:),T);
+	
+	m=max(FIT(i,:));
+	
+	temp= FIT(i,:)==m;
+	
+	BST{i}=Strategies(temp);
+	
+	prc=FIT(i,:)/sum(FIT(i,:));
+	
+	POP(i+1,:)=P*prc;
+	
+	alive_str=find(POP(i+1,:)>0);
+	
+	
+	
+	POP(i+1,alive_str(1:end))=Close_int_v(POP(i+1,alive_str(1:end)));
+	
+	
+	
+	end
+	end
+	
+\end{lstlisting}
+\clearpage
+
+\subsection*{\texttt{Close\_int\_v}}{
+\label{appendix:CIV}
+\begin{lstlisting}
+	function y= Close_int_v(x)
+	fl_x=floor(x); % floor function of all the elements
+	
+	fr_x=x-fl_x; % fractional part of all the elements
+	
+	r=int64(sum(fr_x)); % the integernumber we need to put back into fl_x
+	
+	[~,I]=sort(fr_x); %sorting the numbers based on their fractional part
+	
+	fl_x(I(1:r))=fl_x(I(1:r))+1;
+	
+	y=fl_x;
+	
+	
+	end
+	
+\end{lstlisting}
+}
+
+\subsection*{\texttt{Axel2\_improved}}
+\label{appendix:A2I}
+
+\begin{lstlisting}
+	function Scores_per_Group= Axel2_improved(B,Strategies,Pop,T)
+	Re_matrix=Reward_str(B,Strategies,T);
+	
+	Score_per_category=(Re_matrix*Pop'-diag(Re_matrix))';
+	
+	Scores_per_Group=Score_per_category.*Pop;
+	End
+	
+	
+	
+\end{lstlisting}
+
+\subsection*{\texttt{TourTheImi}}
+\label{appendix:TTI}
+	\begin{lstlisting}
+	function P_table=TourTheImi(B,Strategies,PoP0,K,T)
+	combos=all_combinations_sum_m(length(Strategies),sum(PoP0)); %all combinations of the population with the same Strategies
+	P_table=zeros(size(combos,1));
+	for i=1:size(combos,1)
+	Score_str=Axel2_improved(B,Strategies,combos(i,:),T);
+	[bstr, rest]= find_best_inf_str(Score_str,Strategies);
+	Popr=Assign_str(Strategies,combos(i,:));
+	idx_r= find(ismember(Popr,rest));
+	
+	idx_bst=find(ismember(Popr,bstr));
+	if length(idx_r)<K
+	idx_r=[idx_r idx_bst];
+	end
+	comb_pick=nchoosek(idx_r,K);
+	
+	poss_ch=combinations_with_replacement(length(bstr),K);
+	New_st=cell(size(comb_pick,1),size(poss_ch,1));
+	
+	p=numel(New_st);
+	
+	%
+	for j=1:size(comb_pick)
+	for k=1:size(poss_ch,1)
+	temp=Popr;
+	
+	temp(comb_pick(j,:))=bstr(poss_ch(k,:));
+	
+	
+	New_st{j,k}=r2s_state(temp,Strategies);
+	check= sum(combos == New_st{j,k},2) == size(combos,2);
+	check=find(check);
+	P_table(i,check)=P_table(i,check)+1/p;
+	end
+	
+	end
+	
+	end
+	
+	end \end{lstlisting}
+	
+	
+	\subsection*{\texttt{all\_combinations\_sum\_m}}
+	\label{appendix:ACS}
+		\begin{lstlisting}
+		function combos = all_combinations_sum_m(n, m)
+		% This function returns all combinations of non-negative integers
+		% of length n that sum to m
+		% Total number of places (m stars + n - 1 bars)
+		total = m + n - 1;
+		% Generate all combinations of n - 1 bar positions
+		bar_positions = nchoosek(1:total, n - 1);
+		num_combos = size(bar_positions, 1);
+		combos = zeros(num_combos, n);
+		for i = 1:num_combos
+		% The positions of bars split m stars into n parts
+		% Add 0 and total+1 to make it easier to compute differences
+		positions = [0, bar_positions(i,:), total + 1];
+		combos(i, :) = diff(positions) - 1;
+		end
+		end
+		
+	\end{lstlisting}
+	
+	\subsection*{\texttt{find\_best\_inf\_str}}
+	\label{appendix:FBIS}
+	\begin{lstlisting}
+		
+		function [best_str,rest_str]=find_best_inf_str(Score_per_str,Strategies)
+		m=max(Score_per_str);
+		temp= Score_per_str==m;
+		temp2= ~temp;
+		best_str=Strategies(temp);
+		rest_str=Strategies(temp2);
+		end
+		
+	\end{lstlisting}
+	
+	\subsection*{\texttt{Assign\_str}}
+	\label{appendix:ASstr}
+		\begin{lstlisting}
+		function str_assign= Assign_str(Strategies,Pop)
+		sum_Pop=sum(Pop); %Find the size of the population
+		Pop2=[0 Pop];
+		Pop2=cumsum(Pop2); % The Pop2 helps by defining the limits between the population of one Strategy and another
+		str_assign=strings(1,sum_Pop); %Initialize the string array
+		for i=1:length(Strategies)
+		str_assign(Pop2(i)+1:Pop2(i+1))=Strategies(i); % since the populations and strategies are well organized we use Pop2 to assign the Strategies
+		end
+		
+		end
+		
+		
+	\end{lstlisting}
+	\subsection*{\texttt{TourTheImi2}}
+	\label{appendix:TTI2}
+	\begin{lstlisting}
+		function P_table=TourTheImi2(B,Strategies,PoP0,K,T)
+		combos=all_combinations_sum_m(length(Strategies),sum(PoP0));
+		P_table=zeros(size(combos,1));
+		for i=1:size(combos,1)
+		Score_str=Axel2_improved_2(B,Strategies,combos(i,:),T);
+		[bstr, rest]= find_best_inf_str(Score_str,Strategies);
+		Popr=Assign_str(Strategies,combos(i,:));
+		idx_r= find(ismember(Popr,rest));
+		
+		idx_bst=find(ismember(Popr,bstr));
+		if length(idx_r)<K
+		idx_r=[idx_r idx_bst];
+		end
+		comb_pick=nchoosek(idx_r,K);
+		
+		poss_ch=combinations_with_replacement(length(bstr),K);
+		New_st=cell(size(comb_pick,1),size(poss_ch,1));
+		
+		p=numel(New_st);
+		
+		%
+		for j=1:size(comb_pick)
+		for k=1:size(poss_ch,1)
+		temp=Popr;
+		
+		temp(comb_pick(j,:))=bstr(poss_ch(k,:));
+		
+		
+		New_st{j,k}=r2s_state(temp,Strategies);
+		check= sum(combos == New_st{j,k},2) == size(combos,2);
+		check=find(check);
+		P_table(i,check)=P_table(i,check)+1/p;
+		end
+		end
+		end
+		end
+		
+	\end{lstlisting}
+	
+	\subsection*{\texttt{Axel2\_Improved\_2}}
+	\label{appendix:Axel2Imp2}
+	\begin{lstlisting}
+		function Scores_per_Group= Axel2_improved_2(B,Strategies,Pop,T)
+		Re_matrix=Reward_str(B,Strategies,T);
+		Score_per_category=(Re_matrix*Pop'-diag(Re_matrix))';
+		Pop_check= Pop>0;
+		Scores_per_Group=Score_per_category.*Pop_check;
+		end \end{lstlisting}
+	
+	\subsection*{\texttt{TourSimImi}}
+	\label{appendix:TourSimImi}
+	\begin{lstlisting}
+		
+		function [POP, BST] = TourSimImi(B, Strategies, POP0, K, T, J)
+		% TourSimImi - K-player imitation simulation over J generations
+		% Inputs and outputs same as before
+		N = length(Strategies);
+		total_pop = sum(POP0);
+		POP = zeros(J+1, N);
+		POP(1, :) = POP0;
+		BST = zeros(J, 1);  % Track best strategy index per generation
+		for gen = 1:J
+		current_counts = POP(gen, :);
+		current_pop = Assign_str(Strategies, current_counts);  % Get full strategy list
+		% Compute scores for each strategy group
+		score_str = Axel2_improved(B, Strategies, current_counts, T);
+		% Identify best-performing strategies
+		[best_strats, rest_strats] = find_best_inf_str(score_str, Strategies);
+		best_idx = find(strcmp(Strategies, best_strats{1}));
+		a=randi(length(best_strats));
+		if (length(best_strats)) > 1
+		a=randi(length(best_strats));
+		BST(gen) = a;
+		else
+		BST(gen) = best_idx;
+		end
+		% Identify which individuals are using non-best strategies
+		rest_idx = find(ismember(current_pop, rest_strats));
+		% If not enough, allow some best to "reconsider"
+		if length(rest_idx) < K
+		bst_idx = find(ismember(current_pop, best_strats));
+		needed = K - length(rest_idx);
+		rest_idx = [rest_idx; bst_idx(randperm(length(bst_idx), needed))];
+		else
+		rest_idx = rest_idx(randperm(length(rest_idx), K));
+		end
+		% Choose new strategies for these K individuals
+		new_pop = current_pop;
+		for i = 1:K
+		% Randomly choose one of the best strategies to imitate
+		
+		new_pop(rest_idx(i)) = best_strats(a);
+		end
+		
+		POP(gen+1,:) = r2s_state(new_pop,Strategies);
+		end
+		end
+		
+	\end{lstlisting}
+\end{appendices}
