@@ -10,7 +10,7 @@ For inquiries or references, please contact:
 ## Repository Structure
 
 ```
-GAME_THEORY/
+EvolutionaryGamesToolbox/
 ├── Code/
 │   ├── Functions/
 │   ├── Modes/
